@@ -8,7 +8,7 @@ const auth = async (req, res, next) => {
 	const refreshToken = req.cookies.refreshToken;
 
 	
-	jwt.verify(token, "Sears", (err, user) => {
+	jwt.verify(token,process.env.SECRET_KEY, (err, user) => {
 		if (err) {
 			console.log(process.env.SECRET_KEY);
 			console.log(user);
