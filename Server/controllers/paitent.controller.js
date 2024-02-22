@@ -57,8 +57,9 @@ PatientRouter.patch("/:id",auth,async (req, res) => {
     }
 })
 PatientRouter.delete("/:id",auth,async (req, res) => {
-    try {
+    try {    
         const patient = await Patient.findById(req.params.id);
+        console.log(patient);
         if (!patient) {
             return res.status(200).send({ msg: "patient not found" });
         }
