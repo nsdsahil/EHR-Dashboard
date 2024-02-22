@@ -93,7 +93,9 @@ export const Login = (props) => {
 			borderRadius={"10px"}
 			margin={"auto"}
 			marginBottom={"5%"}
-			width={"50%"}
+			marginTop={"5%"}
+			backgroundColor={"white"}
+			width={"40%"}
 		>
 			<FormControl textAlign={"left"}>
 			<Box marginBottom={"10%"} textAlign={"center"}>
@@ -104,20 +106,23 @@ export const Login = (props) => {
 							Electronic Health Record
 						</Text>
 					</Box>
+				<Heading>Login</Heading>
 				<FormLabel>Email</FormLabel>
-				<Input type="email" name="email" onChange={(e) => handlechange(e)} />
+				<Input required type="email" name="email" onChange={(e) => handlechange(e)} />
 				<FormHelperText>
 					Enter the email you'd like to receive the newsletter on.
 				</FormHelperText>
 				<FormErrorMessage>Email is required.</FormErrorMessage>
 				<FormLabel>Password</FormLabel>
 				<Input
+				    required
 					type="password"
 					name="password"
 					onChange={(e) => handlechange(e)}
 				/>
 				<FormHelperText>We'll never share your Password</FormHelperText>
 				<Input
+				    
 					marginTop={5}
 					bg={color.primary}
 					color="white"

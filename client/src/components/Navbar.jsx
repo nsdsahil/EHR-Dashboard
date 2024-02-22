@@ -46,6 +46,30 @@ const Navbar = (props) => {
 	const toast = useToast();
 	const navigate = useNavigate();
 	const { isLogin, setIsLogin } = React.useContext(AuthContext);
+	const handleLogout = async() => {
+		const res=await fetch("https://ehr-dashboard-production.up.railway.app/user/logout",{
+			method:"GET",
+			credentials:"include",
+			
+		})
+		const data = await res.json();
+		console.log(data);
+		if(data.msg=="logout successful"){
+			toast({
+				title: data.msg,
+				description: "You are logged out",
+				status: "success",
+			})
+			setIsLogin(false);
+		}
+		else{
+			toast({
+				title: data.msg,
+				status: "error",
+			})
+		}
+		
+	}
 
 	const isMobile = useBreakpointValue({
 		base: true,
@@ -74,7 +98,7 @@ const Navbar = (props) => {
 					h={16}
 					padding={2}
 					flexDirection={"column"}
-					alignItems={"center"}
+					
 					justifyContent={"space-between"}
 					gap={4}
 				>
@@ -86,15 +110,15 @@ const Navbar = (props) => {
 							Electronic Health Record
 						</Text>
 					</Box>
-					<Flex onClick={() => navigate("/login")} alignItems={"center"}>
+					<Flex onClick={() => {isLogin ? handleLogout() : navigate("/login")}} >
 						<img
 							width="50"
 							height="50"
-							src="https://img.icons8.com/external-others-pike-picture/100/FFFFFF/external-Patient-organ-others-pike-picture-3.png"
-							alt="external-Patient-organ-others-pike-picture-3"
+							src="https://img.icons8.com/ios/50/FFFFFF/login-rounded-right--v1.png"
+							alt="login-rounded-right--v1"
 						/>
 						<Text fontWeight={"bold"} fontSize={"2xl"} color="white">
-							Login
+							{isLogin ? "Logout" : "Login"}
 						</Text>
 					</Flex>
 					<Divider />
