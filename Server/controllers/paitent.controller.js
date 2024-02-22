@@ -58,7 +58,7 @@ PatientRouter.patch("/:id",auth,async (req, res) => {
 })
 PatientRouter.delete("/:id",auth,async (req, res) => {
     try {    
-        const patient = await Patient.findById(req.params.id);
+        const patient = await Patient.findOne(req.params.id);
         console.log(patient);
         if (!patient) {
             return res.status(200).send({ msg: "patient not found" });
@@ -75,4 +75,4 @@ PatientRouter.delete("/:id",auth,async (req, res) => {
     }
 })
 
-module.exports = PatientRouter
+module.exports = PatientRouter  
