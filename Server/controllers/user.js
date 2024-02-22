@@ -4,11 +4,9 @@ const express = require("express");
 const User = require("../models/user.model");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const SibApiV3Sdk = require("@getbrevo/brevo");
 const UserModel = require("../models/user.model");
 const UserTempModel = require("../models/userTemp.model");
 const BlacklistTokenModel = require("../models/blacklistToken");
-const cookieParser = require("cookie-parser");
 const auth = require("../middlewares/auth.middleware");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -16,12 +14,11 @@ dotenv.config();
 const transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
-	  user: "sahilroyal91@gmail.com",
-	  pass: "ybtwdogzakknnuja",
+		user: "sahilroyal91@gmail.com",
+		pass: "ybtwdogzakknnuja",
 	},
-  });
+});
 
-  
 const UserRouter = express.Router();
 
 UserRouter.get("/", async (req, res) => {
@@ -62,12 +59,12 @@ UserRouter.post("/register", async (req, res) => {
 				to: email,
 				subject: "OTP Verification",
 				text: `Your OTP for email verification is: ${otp}`,
-			  }
-			
-			  await transporter.sendMail(mailOptions);
-			  res.status(200).send({msg:'otp sent'})
+			};
+
+			await transporter.sendMail(mailOptions);
+			res.status(200).send({ msg: "otp sent" });
 		}
-	} catch (error) {	
+	} catch (error) {
 		res.status(200).send({
 			message: error.message,
 		});
@@ -85,7 +82,7 @@ UserRouter.post("/verify", async (req, res) => {
 			});
 		} else {
 			if (parseInt(findingUser.otp) == otp) {
-				console.log("otp matched")
+				console.log("otp matched");
 				const hasedPassword = await bcrypt.hash(findingUser.password, 10);
 				const user = new UserModel({
 					email,
@@ -96,12 +93,11 @@ UserRouter.post("/verify", async (req, res) => {
 				});
 				await user.save();
 				await UserTempModel.deleteOne({ email: findingUser.email });
-				console.log("user registered")
+				console.log("user registered");
 				res.status(200).send({
 					msg: "user registered",
 				});
-			}
-			else {
+			} else {
 				throw new Error({
 					msg: "wrong otp",
 				});
@@ -118,11 +114,11 @@ UserRouter.post("/login", async (req, res) => {
 	const { email, password } = req.body;
 	console.log(req.body);
 	try {
-		const findingUser = await User.findOne({email});
+		const findingUser = await User.findOne({ email });
 		if (!findingUser) {
 			res.status(200).send({
 				message: "user not found",
-			})
+			});
 		} else {
 			const isMatch = await bcrypt.compare(password, findingUser.password);
 			if (!isMatch) {
@@ -162,7 +158,7 @@ UserRouter.post("/login", async (req, res) => {
 UserRouter.get("/logout", auth, async (req, res) => {
 	const token = req.cookies.token;
 	const refreshToken = req.cookies.refreshToken;
-	console.log("logout sucessfully")
+	console.log("logout sucessfully");
 	try {
 		const blacklist = new BlacklistTokenModel({
 			token,
