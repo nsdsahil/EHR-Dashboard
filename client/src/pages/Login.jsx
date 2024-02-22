@@ -126,7 +126,7 @@ export const Login = (props) => {
 					marginTop={5}
 					bg={color.primary}
 					color="white"
-					width
+						
 					value="Login"
 					type="submit"
 					onClick={(e) => handleSubmit(e)}

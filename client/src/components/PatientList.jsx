@@ -28,6 +28,9 @@ import { Action } from "./Action";
 export const PatientList = (props) => {
 	const {isLogin, setIsLogin} = useContext(AuthContext);
 	const navigate = useNavigate();
+	if(!isLogin){
+		navigate("/login");
+	}
 
 	const [patients, setPatients] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
@@ -52,9 +55,7 @@ export const PatientList = (props) => {
 
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-	if(!isLogin){
-		navigate("/login");
-	}
+	
 	
 	const currentItems = patients.slice(indexOfFirstItem, indexOfLastItem);
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);

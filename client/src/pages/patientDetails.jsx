@@ -24,10 +24,11 @@ export const PatientDetails = (props) => {
 		}
 		getData();
 	},[])
+	
 	return (
-		<Box gap={2} backgroundColor={"#f5f5f5"} height={"100vh"} width={"100%"}>
+		<Box marginTop={"3%"} gap={2} backgroundColor={"#f5f5f5"} height={"100vh"} width={"100%"}>
 			<Flex justifyContent={"space-between"} padding={3}>
-				<Heading>Patient Details</Heading> <Button>Update Profile</Button>
+				<Heading>Patient Details</Heading> <Button backgroundColor={"#20B2AA"} color={"white"} >Update Profile</Button>
 			</Flex>
 			<Box p={5} backgroundColor={"white"}>
 				<Box
