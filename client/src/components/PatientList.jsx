@@ -31,6 +31,7 @@ export const PatientList = (props) => {
 
 	const [patients, setPatients] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
+	
 	const [itemsPerPage, setItemsPerPage] = useState(12);
 	useEffect(() => {
 		async function getData() {
@@ -51,6 +52,10 @@ export const PatientList = (props) => {
 
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+	if(!isLogin){
+		navigate("/login");
+	}
+	
 	const currentItems = patients.slice(indexOfFirstItem, indexOfLastItem);
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 	return (
