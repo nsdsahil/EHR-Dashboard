@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContextProvider";
+import { useNavigate } from "react-router-dom";
 import {
 	Table,
 	Thead,
@@ -23,12 +26,18 @@ import { Action } from "./Action";
  **/
 
 export const PatientList = (props) => {
+	const {isLogin, setIsLogin} = useContext(AuthContext);
+	const navigate = useNavigate();
+
 	const [patients, setPatients] = useState([]);
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(12);
 	useEffect(() => {
 		async function getData() {
-			const res = await fetch("https://ehr-dashboard-production.up.railway.app/patient");
+			const res = await fetch("https://ehr-dashboard-production.up.railway.app/patient",{
+				method: "GET",
+				credentials: "include",
+			});
 			const data = await res.json();
 			console.log(data);
 			setPatients(data);
@@ -52,7 +61,7 @@ export const PatientList = (props) => {
 			marginTop={"10"}
 			backgroundColor={"white"}
 		>
-			<TableContainer>
+			{isLogin ?<><TableContainer>
 				<Table variant="simple">
 					<TableCaption></TableCaption>
 					<Thead>
@@ -129,7 +138,18 @@ export const PatientList = (props) => {
 				>
 					Next
 				</Button>
-			</Flex>
+			</Flex></>:<Box textAlign={"center"} p={5}>
+				please Login First 
+				<Button
+					size="sm"
+					color={"white"}
+					bgColor={"#20B2AA"}
+					onClick={() => navigate("/login")}
+				>
+					Login
+				</Button>
+				
+				</Box>}
 		</Box>
 	);
 };

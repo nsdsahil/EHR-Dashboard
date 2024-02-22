@@ -13,7 +13,10 @@ export const PatientDetails = (props) => {
 	useEffect(()=>{
 		console.log(id)
 		async function getData(){
-			const res=await fetch(`https://ehr-dashboard-production.up.railway.app/patient/${id}`);
+			const res=await fetch(`https://ehr-dashboard-production.up.railway.app/patient/${id}`,{
+				method:"GET",
+				credentials:"include"
+			});
 			const data=await res.json();
 			setPatient(data);
 			console.log(data);

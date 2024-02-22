@@ -3,7 +3,7 @@ const Patient = require("../models/patient.model");
 const auth = require("../middlewares/auth.middleware");
 const PatientRouter = express.Router();
 
-PatientRouter.get("/",  async (req, res) => {
+PatientRouter.get("/",auth,async (req, res) => {
     try {
         const patients = await Patient.find();
         res.status(200).send(patients);
@@ -13,7 +13,7 @@ PatientRouter.get("/",  async (req, res) => {
         });
     }
 });
-PatientRouter.get("/:id",  async (req, res) => {
+PatientRouter.get("/:id", auth,async (req, res) => {
     try {
         const patient = await Patient.findById(req.params.id);
         if (!patient) {
@@ -26,7 +26,7 @@ PatientRouter.get("/:id",  async (req, res) => {
         });
     }
 });
-PatientRouter.post("/",  async (req, res) => {
+PatientRouter.post("/",auth,async (req, res) => {
     const patient = new Patient(req.body);
     try {
         await patient.save();
@@ -39,7 +39,7 @@ PatientRouter.post("/",  async (req, res) => {
     }
     
 })
-PatientRouter.patch("/:id",  async (req, res) => {
+PatientRouter.patch("/:id",auth,async (req, res) => {
     try {
         const patient = await Patient.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).send({
@@ -52,7 +52,7 @@ PatientRouter.patch("/:id",  async (req, res) => {
         })
     }
 })
-PatientRouter.delete("/:id",  async (req, res) => {
+PatientRouter.delete("/:id",auth,async (req, res) => {
     try {
         const patient = await Patient.findByIdAndDelete(req.params.id);
         res.status(200).send(patient);
