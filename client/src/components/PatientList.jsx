@@ -28,12 +28,11 @@ import { Action } from "./Action";
 export const PatientList = (props) => {
 	const {isLogin, setIsLogin} = useContext(AuthContext);
 	const navigate = useNavigate();
+	const [patients, setPatients] = useState([]);
+	const [currentPage, setCurrentPage] = useState(1);
 	if(!isLogin){
 		navigate("/login");
 	}
-
-	const [patients, setPatients] = useState([]);
-	const [currentPage, setCurrentPage] = useState(1);
 	
 	const [itemsPerPage, setItemsPerPage] = useState(12);
 	useEffect(() => {
@@ -43,20 +42,19 @@ export const PatientList = (props) => {
 				credentials: "include",
 			});
 			const data = await res.json();
+			if(data.message=="Invalid access token")setIsLogin(false);
 			console.log(data);
 			setPatients(data);
 		}
 		getData();
 	}, []);
-
 	// Calculate indexes for slicing the data array
 
 	//making dummy data
 
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-	
-	
+	const temp=[]
 	const currentItems = patients.slice(indexOfFirstItem, indexOfLastItem);
 	const paginate = (pageNumber) => setCurrentPage(pageNumber);
 	return (
