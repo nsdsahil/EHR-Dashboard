@@ -45,7 +45,7 @@ export const Login = (props) => {
 			status: "info",
 		});
 		await axios
-			.post("http://localhost:8080/user/login", userDetails, {
+			.post("https://ehr-dashboard-production.up.railway.app/user/login", userDetails, {
 				withCredentials: true,
 			})
 			.then((res) => {

@@ -12,7 +12,7 @@ export const Action = ({patient}) => {
   const Toast = useToast()
    console.log(patient)
    const  handleDelete  = async(e) => {
-     const res= await fetch(`http://localhost:8080/patient/${patient._id}`,{
+     const res= await fetch(`https://ehr-dashboard-production.up.railway.app/${patient._id}`,{
        method:"DELETE",
        credentials:"include"
      });

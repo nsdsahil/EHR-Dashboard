@@ -115,7 +115,7 @@ const Register = () => {
 			status: "info",
 		})
 		await axios
-			.post("http://localhost:8080/user/register", userDetails, {
+			.post("https://ehr-dashboard-production.up.railway.app/user/register", userDetails, {
 				withCredentials: true,
 			})
 			.then((res) => {

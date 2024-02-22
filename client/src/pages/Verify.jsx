@@ -52,7 +52,7 @@ const verify = (props) => {
 
 		try {
 			const res = await axios.post(
-				"http://localhost:8080/user/verify",
+				"https://ehr-dashboard-production.up.railway.app/user/verify",
 				TempUserDetails,
 				{ withCredentials: true }
 			);

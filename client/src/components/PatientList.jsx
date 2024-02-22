@@ -28,7 +28,7 @@ export const PatientList = (props) => {
 	const [itemsPerPage, setItemsPerPage] = useState(12);
 	useEffect(() => {
 		async function getData() {
-			const res = await fetch("http://localhost:8080/patient");
+			const res = await fetch("https://ehr-dashboard-production.up.railway.app/patient");
 			const data = await res.json();
 			console.log(data);
 			setPatients(data);

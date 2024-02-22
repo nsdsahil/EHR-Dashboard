@@ -50,7 +50,7 @@ function AddPatient() {
 			status: "info",
 		});
 		await axios
-			.post("http://localhost:8080/patient", patientDetails, {
+			.post("https://ehr-dashboard-production.up.railway.app/patient", patientDetails, {
 				withCredentials: true,
 			})
 			.then((res) => {
