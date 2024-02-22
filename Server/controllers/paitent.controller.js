@@ -41,24 +41,34 @@ PatientRouter.post("/",auth,async (req, res) => {
 })
 PatientRouter.patch("/:id",auth,async (req, res) => {
     try {
-        const patient = await Patient.findByIdAndUpdate(req.params.id, req.body);
+        const patient = await Patient.findById(req.params.id);
+        if (!patient) {
+            return res.status(200).send({ msg: "patient not found" });
+        }
+        const updatedpatient = await Patient.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).send({
             msg: "patient updated successfully",
         });
     }
-    catch (error) {
+    catch (error){
         res.status(500).send({
             msg: error.message,
-        })
+        })  
     }
 })
 PatientRouter.delete("/:id",auth,async (req, res) => {
     try {
-        const patient = await Patient.findByIdAndDelete(req.params.id);
-        res.status(200).send(patient);
+        const patient = await Patient.findById(req.params.id);
+        if (!patient) {
+            return res.status(200).send({ msg: "patient not found" });
+        }
+        await Patient.findByIdAndDelete(req.params.id);
+        res.status(200).send({
+            msg: "patient deleted successfully",
+        });
     }
     catch (error) {
-        res.status(500).send({
+        res.status(500).send({  
             msg: error.message,
         })
     }
