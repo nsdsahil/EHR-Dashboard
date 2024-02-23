@@ -60,30 +60,50 @@ Please use these credentials to log in and explore the functionalities of our EH
 
 ### Frontend
 
-- React.js
-- Chakra UI
-- Framer Motion
-- React Icons
-- React Router DOM
-- React Paginate
-- React Rating Stars Component
+1. 
+   ![React.js](https://img.shields.io/badge/React.js-Latest-blue)
+2.
+   ![Chakra UI](https://img.shields.io/badge/Chakra%20UI-Latest-9cf)
+3.
+   ![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Latest-brightgreen)
+4. 
+   ![React Icons](https://img.shields.io/badge/React%20Icons-Latest-blueviolet)
+5. 
+   ![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-Latest-orange)
+
+
 
 ### Backend
 
-- Node.js
-- Express.js
-- MongoDB
-- JSON Web Tokens (JWT) for authentication
-- bcrypt for password hashing
-- Axios (for making HTTP requests)
-- Cookie-parser
-- Cors
-- Dcrypt
-- Dotenv
-- Jsonwebtoken
-- Mongoose
-- Nodemailer
-- Nodemon (for development)
+1. 
+   ![Node.js](https://img.shields.io/badge/Node.js-14.x-green)
+2. 
+   ![Express.js](https://img.shields.io/badge/Express.js-4.x-blue)
+3.
+   ![MongoDB](https://img.shields.io/badge/MongoDB-Latest-green)
+4. 
+   ![JWT](https://img.shields.io/badge/JWT-Authentication-orange)
+5.
+   ![bcrypt](https://img.shields.io/badge/bcrypt-Password%20Hashing-blue)
+6.
+   ![Axios](https://img.shields.io/badge/Axios-HTTP%20Requests-blue)
+7. 
+   ![Cookie-parser](https://img.shields.io/badge/Cookie--parser-Request%20Parsing-lightgrey)
+8. 
+   ![Cors](https://img.shields.io/badge/Cors-Cross--Origin%20Resource%20Sharing-lightgrey)
+9. 
+   ![Dcrypt](https://img.shields.io/badge/Dcrypt-Encryption-red)
+10.
+    ![Dotenv](https://img.shields.io/badge/Dotenv-Environment%20Variables-yellow)
+11.
+    ![Jsonwebtoken](https://img.shields.io/badge/Jsonwebtoken-Token%20Generation-orange)
+12. 
+    ![Mongoose](https://img.shields.io/badge/Mongoose-ORM-yellow)
+13. 
+    ![Nodemailer](https://img.shields.io/badge/Nodemailer-Email%20Sending-red)
+14. 
+    ![Nodemon](https://img.shields.io/badge/Nodemon-Development-green)
+
 
 ## Design
 
