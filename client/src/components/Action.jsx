@@ -21,7 +21,7 @@ export const Action = ({ patient }) => {
 	async function handleDelete() {
 		try {
 			const res = await fetch(
-				`https://ehr-dashboard-production.up.railway.app/${patient._id}`,
+				`https://ehr-dashboard-production.up.railway.app/patient/${patient._id}`,
 				{
 					method: "DELETE",
 					credentials: "include",
