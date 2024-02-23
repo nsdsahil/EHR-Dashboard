@@ -23,7 +23,7 @@ export const Patients = (props) => {
               backgroundColor={"#f5f5f5"} 
               alignItems={"center"}
               position={'sticky'}
-              top={10}
+              top={0}
               marginBottom={2}
               
               padding={2}
