@@ -46,30 +46,30 @@ const Navbar = (props) => {
 	const toast = useToast();
 	const navigate = useNavigate();
 	const { isLogin, setIsLogin } = React.useContext(AuthContext);
-	const handleLogout = async() => {
-		const res=await fetch("https://ehr-dashboard-production.up.railway.app/user/logout",{
-			method:"GET",
-			credentials:"include",
-			
-		})
+	const handleLogout = async () => {
+		const res = await fetch(
+			"https://ehr-dashboard-production.up.railway.app/user/logout",
+			{
+				method: "GET",
+				credentials: "include",
+			}
+		);
 		const data = await res.json();
 		console.log(data);
-		if(data.msg=="logout successful"){
+		if (data.msg == "logout successful") {
 			toast({
 				title: data.msg,
 				description: "You are logged out",
 				status: "success",
-			})
+			});
 			setIsLogin(false);
-		}
-		else{
+		} else {
 			toast({
 				title: data.msg,
 				status: "error",
-			})
+			});
 		}
-		
-	}
+	};
 
 	const isMobile = useBreakpointValue({
 		base: true,
@@ -94,11 +94,9 @@ const Navbar = (props) => {
 				px={4}
 			>
 				<Flex
-					_hover={{ cursor: "pointer" }}
 					h={16}
 					padding={2}
 					flexDirection={"column"}
-					
 					justifyContent={"space-between"}
 					gap={4}
 				>
@@ -110,7 +108,12 @@ const Navbar = (props) => {
 							Electronic Health Record
 						</Text>
 					</Box>
-					<Flex onClick={() => {isLogin ? handleLogout() : navigate("/login")}} >
+					<Flex
+						_hover={{ cursor: "pointer" }}
+						onClick={() => {
+							isLogin ? handleLogout() : navigate("/login");
+						}}
+					>
 						<img
 							width="50"
 							height="50"
@@ -122,7 +125,27 @@ const Navbar = (props) => {
 						</Text>
 					</Flex>
 					<Divider />
-					<Flex onClick={() => navigate("/")} alignItems={"center"}>
+					<Flex
+						_hover={{ cursor: "pointer" }}
+						onClick={() => navigate("/")}
+						alignItems={"center"}
+					>
+						<img
+							width="50"
+							height="50"
+							src="https://img.icons8.com/ios-filled/50/FFFFFF/dashboard.png"
+							alt="dashboard"
+						/>
+						<Text fontWeight={"bold"} fontSize={"2xl"} color="white">
+							Dashboard
+						</Text>
+					</Flex>
+					<Divider />
+					<Flex
+						_hover={{ cursor: "pointer" }}
+						onClick={() => navigate("/patients")}
+						alignItems={"center"}
+					>
 						<img
 							width="50"
 							height="50"
@@ -134,7 +157,7 @@ const Navbar = (props) => {
 						</Text>
 					</Flex>
 					<Divider />
-					<Flex alignItems={"center"}>
+					<Flex _hover={{ cursor: "pointer" }} alignItems={"center"}>
 						<img
 							width="50"
 							height="50"
@@ -146,19 +169,19 @@ const Navbar = (props) => {
 						</Text>
 					</Flex>
 					<Divider />
-					<Flex alignItems={"center"}>
+					<Flex _hover={{ cursor: "pointer" }} alignItems={"center"}>
 						<img
 							width="50"
 							height="50"
 							src="https://img.icons8.com/ios/50/FFFFFF/continuous-mode.png"
 							alt="continuous-mode"
 						/>
-						<Text fontWeight={"bold"} fontSize={"2xl"} color="white">
+						<Text fontWeight={"bold"} fontSize={"2xl"	} color="white">
 							Pages
 						</Text>
 					</Flex>
 					<Divider />
-					<Flex alignItems={"center"}>
+					<Flex _hover={{ cursor: "pointer" }} alignItems={"center"}>
 						<img
 							width="50"
 							height="50"

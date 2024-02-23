@@ -48,9 +48,7 @@ export const PatientList = (props) => {
 		}
 		getData();
 	}, []);
-	// Calculate indexes for slicing the data array
-
-	//making dummy data
+	
 
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
