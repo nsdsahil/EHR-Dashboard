@@ -54,7 +54,7 @@ function AddPatient() {
 				withCredentials: true,
 			})
 			.then((res) => {
-				if(res.data.msg=="Patient added successfully"){
+				if(res.data.msg=="patient added successfully"){
 					toast({
 						title: "Adding New Patient",
 						description: "success",

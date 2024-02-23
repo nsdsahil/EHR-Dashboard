@@ -29,7 +29,7 @@ export const Action = ({ patient }) => {
 			);
 			const data = await res.json();
 			console.log(data);
-			if (data.msg == "Patient deleted successfully") {
+			if (data.msg == "patient deleted successfully") {
 				window.location.reload();
 				Toast({
 					title: "Patient Deleted",
