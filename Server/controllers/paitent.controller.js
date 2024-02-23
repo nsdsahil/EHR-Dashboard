@@ -14,8 +14,9 @@ PatientRouter.get("/",auth,async (req, res) => {
     }
 });
 PatientRouter.get("/:id", auth,async (req, res) => {
+    const id = req.params.id;
     try {
-        const patient = await Patient.findById(req.params.id);
+        const patient = await Patient.findById({ _id: id });
         if (!patient) {
             return res.status(200).send({ msg: "patient not found" });
         }
@@ -40,12 +41,13 @@ PatientRouter.post("/",auth,async (req, res) => {
     
 })
 PatientRouter.patch("/:id",auth,async (req, res) => {
+    const id = req.params.id;
     try {
-        const patient = await Patient.findById(req.params.id);
+        const patient = await Patient.findById({ _id: id });
         if (!patient) {
             return res.status(200).send({ msg: "patient not found" });
         }
-        const updatedpatient = await Patient.findByIdAndUpdate(req.params.id, req.body);
+        const updatedpatient = await Patient.findByIdAndUpdate({ _id: id });
         res.status(200).send({
             msg: "patient updated successfully",
         });
@@ -57,13 +59,14 @@ PatientRouter.patch("/:id",auth,async (req, res) => {
     }
 })
 PatientRouter.delete("/:id",auth,async (req, res) => {
+    const id = req.params.id;
     try {    
-        const patient = await Patient.findOne(req.params.id);
+        const patient = await Patient.findOne({ _id: id });
         console.log(patient);
         if (!patient) {
             return res.status(200).send({ msg: "patient not found" });
         }
-        await Patient.findByIdAndDelete(req.params.id);
+        await Patient.findByIdAndDelete({ _id: id });
         res.status(200).send({
             msg: "patient deleted successfully",
         });
