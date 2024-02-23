@@ -70,6 +70,7 @@ Please use these credentials to log in and explore the functionalities of our EH
    ![React Icons](https://img.shields.io/badge/React%20Icons-Latest-blueviolet)
 5. 
    ![React Router DOM](https://img.shields.io/badge/React%20Router%20DOM-Latest-orange)
+6. ![Context Api](https://img.shields.io/badge/Context%20Api-Latest-brightgreen)
 
 
 
