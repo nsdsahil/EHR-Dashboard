@@ -43,6 +43,7 @@ const auth = async (req, res, next) => {
 					.send({ message: "Invalid access token", err: err });
 			}
 		} else {
+			console.log("user verified");
 			next();
 			
 		}

@@ -19,29 +19,36 @@ export const Action = ({ patient }) => {
 	const Toast = useToast();
 	
 	async function handleDelete() {
-		const res = await fetch(
-			`https://ehr-dashboard-production.up.railway.app/${patient._id}`,
-			{
-				method: "DELETE",
-				credentials: "include",
+		try {
+			const res = await fetch(
+				`https://ehr-dashboard-production.up.railway.app/${patient._id}`,
+				{
+					method: "DELETE",
+					credentials: "include",
+				}
+			);
+			const data = await res.json();
+			console.log(data);
+			if (data.msg == "Patient deleted successfully") {
+				window.location.reload();
+				Toast({
+					title: "Patient Deleted",
+					description: "success",
+					status: "success",
+				});
+			} else {
+				Toast({
+					title: "Error",
+					description: data.msg,
+					status: "error",
+				});
 			}
-		);
-		const data = await res.json();
-		console.log(data);
-		if (data.msg == "Patient deleted successfully") {
-			window.location.reload();
-			Toast({
-				title: "Patient Deleted",
-				description: "success",
-				status: "success",
-			});
-		} else {
-			Toast({
-				title: "Error",
-				description: data.msg,
-				status: "error",
-			});
+			
+		} catch (error) {
+			console.log(error);
+			
 		}
+		
 	};
 
 	return (
